@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //jUnit
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    // RestAssured
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.1'
+    // Lombok
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    // Allure
+    testImplementation("io.qameta.allure:allure-junit5:2.13.6")
+    implementation("io.qameta.allure:allure-attachments:2.13.6")
+    // Google.guava
+    implementation("com.google.guava:guava:20.0")
+    // Jackson
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+}
+
+test {
+    useJUnitPlatform()
+}
