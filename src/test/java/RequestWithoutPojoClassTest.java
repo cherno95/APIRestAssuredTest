@@ -21,7 +21,7 @@ public class RequestWithoutPojoClassTest {
         Response response = given()
                 .when()
                 .get("api/users?page=2")
-                .then().log().all()
+                .then()
                 .body("page", equalTo(2))
                 .body("data.id", notNullValue())
                 .body("data.email", notNullValue())
@@ -53,7 +53,7 @@ public class RequestWithoutPojoClassTest {
                 .body(user)
                 .when()
                 .post("api/register")
-                .then().log().all()
+                .then()
                 .extract().response();
 
         JsonPath jsonPath = response.jsonPath();
@@ -75,7 +75,7 @@ public class RequestWithoutPojoClassTest {
                 .body(user)
                 .when()
                 .post("api/register")
-                .then().log().all()
+                .then()
                 .extract().response();
 
         JsonPath jsonPath = response.jsonPath();

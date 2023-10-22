@@ -26,7 +26,7 @@ public class RequestTest {
         List<UserData> users = given()
                 .when()
                 .get("api/users?page=2")
-                .then().log().all()
+                .then()
                 .extract().body().jsonPath().getList("data", UserData.class);
 
         //  users.forEach(x -> Assertions.assertTrue(x.getAvatar().contains(x.getId().toString())));
@@ -56,7 +56,7 @@ public class RequestTest {
                 .body(user)
                 .when()
                 .post("api/register")
-                .then().log().all()
+                .then()
                 .extract().as(SuccessReg.class);
         Assertions.assertNotNull(successReg.getId());
         Assertions.assertNotNull(successReg.getToken());
@@ -75,7 +75,7 @@ public class RequestTest {
                 .body(user)
                 .when()
                 .post("api/register")
-                .then().log().all()
+                .then()
                 .extract().as(FailedReg.class);
         Assertions.assertEquals("Missing password", failedReg.getError());
     }
@@ -86,7 +86,7 @@ public class RequestTest {
         List<ColorsData> colors = given()
                 .when()
                 .get("api/unknown")
-                .then().log().all()
+                .then()
                 .extract().body().jsonPath().getList("data", ColorsData.class);
 
         List<Integer> years = colors.stream()
@@ -107,7 +107,7 @@ public class RequestTest {
         given()
                 .when()
                 .delete("api/users/2")
-                .then().log().all();
+                .then();
     }
 
     @Test
@@ -120,7 +120,7 @@ public class RequestTest {
                 .body(updateInfoUsers)
                 .when()
                 .put("api/users/2")
-                .then().log().all()
+                .then()
                 .extract().as(UpdateInfoUsersRs.class);
         String regexOne = "(.{8})$";
         String regexTwo = "(.{5})$";
